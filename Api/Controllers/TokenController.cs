@@ -5,7 +5,7 @@ using TokenRevocationService.Application.Interfaces;
 namespace TokenRevocationService.Api.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/tokens")]
 public class TokenController : ControllerBase
 {
     private readonly ITokenRevocationService _revocationService;
