@@ -22,5 +22,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+logs/
 
 .vs/

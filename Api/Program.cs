@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using StackExchange.Redis;
 using TokenRevocationService.Application.Interfaces;
 using TokenRevocationService.Application.Services;
@@ -38,7 +39,12 @@ else
 
 builder.Services.AddScoped<ITokenRevocationService, TokenRevocationService.Application.Services.TokenRevocationService>();
 
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration));
+
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 if (storeProvider.Equals("Postgres", StringComparison.OrdinalIgnoreCase))
 {
